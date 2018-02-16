@@ -54,7 +54,8 @@ export const goHome = (navigation) => {
 }
 
 export const clearLocalNotification = () => {
-
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
+    .then(Notifications.cancelAllScheduledNotificationsAsync())
 }
 
 const createLocalNotification = () => {

@@ -37,11 +37,11 @@ class DeckDetail extends Component {
   }
 
   startQuiz = () => {
-    const { selectDecks, selectNoOfQuestion, navigation } = this.props;
+    const { selectDecks, selectNoOfQuestion, navigation, cards } = this.props;
 
     // Update Redux store
     selectDecks([ navigation.state.params.deckTitle ])
-    selectNoOfQuestion('all');
+    selectNoOfQuestion(cards.length);
 
     navigation.navigate(
       'QuizPlay'
