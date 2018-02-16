@@ -1,4 +1,6 @@
 import { AsyncStorage } from 'react-native'
+import { getInitialQuizData } from './quizInitialData'
+
 
 const DATA_STORAGE_KEY = "Flashcards:data"
 
@@ -11,22 +13,30 @@ export const addDeckToStorage = (deck) => {
 }
 
 export const addCardToStorage = (card, deckTitle) => {
-  AsyncStorage.getItem(DATA_STORAGE_KEY).then(results => {
-    const data = JSON.parse(results);
-    const questions = data[deckTitle].questions || [];
+  fetchDataFromStorage()
+    .then(data => {
+      const questions = data[deckTitle].questions || [];
 
-    data[deckTitle] = {
-      ...data[deckTitle],
-      questions: [...questions, card]
-    }
+      data[deckTitle] = {
+        ...data[deckTitle],
+        questions: [...questions, card]
+      }
 
-    AsyncStorage.setItem(DATA_STORAGE_KEY, JSON.stringify(data));
-  })
+      AsyncStorage.setItem(DATA_STORAGE_KEY, JSON.stringify(data));
+    })
 }
 
-export const getDecksFromStorage = () => {
+const setInitialDataToStorage = () => {
+  const data = getInitialQuizData();
+  AsyncStorage.setItem(
+    DATA_STORAGE_KEY, JSON.stringify(getInitialQuizData()))
+
+  return data;
+}
+
+export const fetchDataFromStorage = () => {
   return AsyncStorage.getItem(DATA_STORAGE_KEY)
-    .then(JSON.parse)
+    .then(results => console.log('fetchDataFromStorage', JSON.parse(results)) || (results ? JSON.parse(results) : setInitialDataToStorage()))
 }
 
 export const removeData = () => {
