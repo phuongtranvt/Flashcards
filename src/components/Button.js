@@ -14,9 +14,7 @@ import * as colors from '../config/colors';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import normalize from '../utils/normalizeText'
 
-const log = () => {
-  console.log('please attach method to this component'); //eslint-disable-line no-console
-};
+// This file use code taken from 'react native elemnts' and customize a bit to my needs.
 
 const Button = props => {
   const {

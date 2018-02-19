@@ -11,6 +11,8 @@ import fonts from '../config/fonts';
 import { grey1 } from '../config/colors';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
+// This file use code taken from 'react native elemnts' and customize a bit to my needs.
+
 const Row = props => {
   const {
     title,

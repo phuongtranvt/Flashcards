@@ -11,7 +11,7 @@ import fonts from '../config/fonts';
 import { grey1 } from '../config/colors';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 import Row from './ClickableRow'
-
+//heeh
 const CheckBoxRow = props => {
   const {
     checked,
@@ -85,10 +85,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
+    // margin: 5,
+    // marginLeft: 10,
+    // marginRight: 10,
     backgroundColor: '#fafafa',
     borderColor: '#ededed',
     borderWidth: 1,
     padding: 12,
+    //borderRadius: 3,
   },
   text: {
     marginLeft: 10,

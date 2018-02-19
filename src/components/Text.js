@@ -4,6 +4,8 @@ import { Text, StyleSheet, Platform } from 'react-native';
 import fonts from '../config/fonts';
 import { grey1 } from '../config/colors'
 
+// This file use code taken from 'react native elemnts' and customize a bit to my needs.
+
 const styles = StyleSheet.create({
   text: {
     ...Platform.select({
