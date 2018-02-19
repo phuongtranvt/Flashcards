@@ -51,7 +51,7 @@ class DeckAdd extends Component {
     const { title, error } = this.state;
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior='padding'>
+      <KeyboardAvoidingView style={styles.container} behavior='padding' keyboardVerticalOffset={20}>
         <View style={{flex: 1, justifyContent: 'center'}}>
           <Text style={styles.deckName}>Deck Name</Text>
           <FormInput

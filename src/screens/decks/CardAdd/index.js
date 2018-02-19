@@ -10,6 +10,7 @@ import TextButton from '../../../components/TextButton'
 import Text from '../../../components/Text'
 import { white } from '../../../config/colors'
 import { MaterialIcons } from '@expo/vector-icons'
+import { Toast } from 'native-base'
 
 class CardAdd extends Component {
   state = {
@@ -34,7 +35,7 @@ class CardAdd extends Component {
     const { question, answer, isInputValidated } = this.state;
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior='padding' keyboardVerticalOffset={60}>
+      <KeyboardAvoidingView style={styles.container} behavior='padding' keyboardVerticalOffset={80}>
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Question</Text>
           <FormInput
@@ -59,7 +60,6 @@ class CardAdd extends Component {
   }
 
   submitAddCard = () => {
-    debugger;
     const { deckTitle } = this.props.navigation.state.params;
 
     // Update redux
@@ -71,14 +71,21 @@ class CardAdd extends Component {
 
     this.props.addCardToDeck(card, deckTitle)
 
+    // Write to AsyncStorage
+    addCardToStorage(card, deckTitle)
+
     // Reset state
     this.setState({
       question: null,
-      answer: null
+      answer: null,
+      isInputValidated: false,
     })
 
-    // Write to AsyncStorage
-    addCardToStorage(card, deckTitle)
+    Toast.show({
+      text: "Card added successfully",
+      position: 'top',
+    })
+
   }
 
   handleInputChange = field => inputText => {
@@ -94,7 +101,7 @@ class CardAdd extends Component {
     this.setState(
       {
         [field]: inputText,
-        isInputValidated: isValidated
+        isInputValidated: isValidated,
       });
   }
 }

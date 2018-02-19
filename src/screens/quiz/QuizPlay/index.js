@@ -175,7 +175,15 @@ class QuizPlay extends Component {
 
     if (this.state.cardIndex < cards.length - 1) {
       // Go to next card
-      this.setState(preState => ({ cardIndex: preState.cardIndex + 1 }))
+       if (!this.state.showQuestion) {
+         this.flipCard();
+       }
+
+       this.setState(preState => ({
+         cardIndex: preState.cardIndex + 1,
+         showQuestion: true,
+        }))
+
     } else {
       // Finish quiz
       navigation.navigate(
@@ -223,7 +231,7 @@ const styles = StyleSheet.create({
     borderColor: grey5,
     borderWidth: 1,
     borderRadius: Platform.OS === 'ios' ? 16 : 2,
-    padding: 20,
+    padding: 15,
     margin: 15,
     marginBottom: 0,
     ...Platform.select({
@@ -251,7 +259,7 @@ const styles = StyleSheet.create({
     marginTop: 3,
   },
   cardTitle: {
-    fontSize: 25,
+    fontSize: 22,
     ...Platform.select({
       ios: {
         fontWeight: 'bold',

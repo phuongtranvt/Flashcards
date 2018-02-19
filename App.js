@@ -15,7 +15,6 @@ import QuizSelectQuestionCount from './src/screens/quiz/QuizSelectQuestionCount'
 import QuizPlay from './src/screens/quiz/QuizPlay'
 import QuizResult from './src/screens/quiz/QuizResult'
 import CardAdd from './src/screens/decks/CardAdd'
-import Demo from './src/Demo'
 import { Constants } from 'expo'
 import { createStore, applyMiddleware, compose } from "redux";
 import { Provider } from "react-redux";
@@ -23,6 +22,7 @@ import reducer from './src/data/reducer';
 import { white, blue, darkBlue } from './src/config/colors'
 import { MaterialCommunityIcons, FontAwesome } from '@expo/vector-icons'
 import { setLocalNotification } from './src/utils/helpers'
+import { Root } from 'native-base'
 
 function FlashcardsStatusBar({ backgroundColor, ...props }) {
   return (
@@ -68,9 +68,6 @@ const Tabs = TabNavigator({
 })
 
 const MainNavigator = StackNavigator({
-  Demo: {
-    screen: Demo
-  },
   Home: {
     screen: Tabs
   },
@@ -114,7 +111,9 @@ export default class App extends Component {
       <Provider store={store}>
         <View style={{flex: 1}}>
           <FlashcardsStatusBar backgroundColor={blue} barStyle='light-content'/>
-          <MainNavigator />
+          <Root>
+            <MainNavigator />
+          </Root>
         </View>
       </Provider>
     );

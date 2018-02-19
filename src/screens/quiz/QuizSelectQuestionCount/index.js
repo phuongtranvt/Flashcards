@@ -11,7 +11,10 @@ import { getQuestionCountOptions } from './questionCountOptions'
 class QuizSelectQuestionCount extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      title: 'Choose number of questions',
+      title: 'Choose questions count',
+      headerTitleStyle: {
+        fontSize: 16
+      }
     }
   }
 

@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-import { getInitialQuizData } from './quizInitialData'
+import { getInitialQuizData } from '../screens/quiz/quizInitialData'
 
 
 const DATA_STORAGE_KEY = "Flashcards:data"
