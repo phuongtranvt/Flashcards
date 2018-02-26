@@ -1,8 +1,7 @@
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
-Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
-
-This app is designed to run on iOS device (or emulator)
+This is a iOS Mobile application developed using React Native and Redux.
+The app allows users to study collections of flashcards. Users are able to create different categories of flashcards, add flashcards to those categories, and take quizzes on those categories.
 
 How to install and run:
   - Install Expo client on your iOS phone
